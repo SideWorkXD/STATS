@@ -13,7 +13,7 @@ module.exports = {
         url: 'https://discord.gg/FUEHs7RCqz'
     })
      
-      .setDescription(`This bot is here to help you with various errors that you might encounter. If you're facing issues, simply type the error in this channel. **Just type error-keyword**.\n\n 🔴 Example: **invalid token**`)
+      .setDescription(`🔴 Bot Still In development, You can't get solution for all errors. \nThis bot is here to help you with various errors that you might encounter. If you're facing issues, simply type the error in this channel. **Just type error-keyword**.\n\n 🔴 Example: **invalid token**`)
 
 
     const button1 = new ButtonBuilder()
