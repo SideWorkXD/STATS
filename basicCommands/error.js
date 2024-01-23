@@ -99,21 +99,26 @@ const errors = [
     .setImage('https://cdn.discordapp.com/attachments/1192831222745927701/1199047555779137727/image.png?ex=65c11f0e&is=65aeaa0e&hm=7d3cf30f6ac3c3b612d3360868bf9bcea9516cf1ae63af8e63a4892d0a6875fc&'),
   }
 ];
+const allowedChannels = ['1125414929734832248', '1131584969844723794', '1169596862098059325', '1113800536483975267', '1113800536483975266', '1113800536483975264']; 
 
 const cooldowns = new Map();
 
 module.exports = {
   name: 'error',
   description: 'Automatically responds to matching errors.',
-  cooldown: 10, 
+  cooldown: 3,
   execute(message) {
+    if (!allowedChannels.includes(message.channel.id)) {
+      return; 
+    }
+
     if (!cooldowns.has(this.name)) {
       cooldowns.set(this.name, {});
     }
 
     const now = Date.now();
     const timestamps = cooldowns.get(this.name);
-    const cooldownAmount = (this.cooldown || 10) * 1000;
+    const cooldownAmount = (this.cooldown || 3) * 1000;
 
     if (timestamps[message.author.id]) {
       const expirationTime = timestamps[message.author.id] + cooldownAmount;
@@ -123,8 +128,10 @@ module.exports = {
         return message.reply(`Please wait ${timeLeft.toFixed(1)} more second(s) before going for next \`${this.name}\`.`);
       }
     }
+
     timestamps[message.author.id] = now;
     setTimeout(() => delete timestamps[message.author.id], cooldownAmount);
+
     for (const error of errors) {
       if (message.content.toLowerCase().includes(error.keywords)) {
         message.reply({ embeds: [error.embed] });
