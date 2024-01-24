@@ -106,37 +106,15 @@ const cooldowns = new Map();
 module.exports = {
   name: 'error',
   description: 'Automatically responds to matching errors.',
-  cooldown: 3,
   execute(message) {
-    if (!allowedChannels.includes(message.channel.id)) {
-      return; 
-    }
-
-    if (!cooldowns.has(this.name)) {
-      cooldowns.set(this.name, {});
-    }
-
-    const now = Date.now();
-    const timestamps = cooldowns.get(this.name);
-    const cooldownAmount = (this.cooldown || 3) * 1000;
-
-    if (timestamps[message.author.id]) {
-      const expirationTime = timestamps[message.author.id] + cooldownAmount;
-
-      if (now < expirationTime) {
-        const timeLeft = (expirationTime - now) / 1000;
-        return message.reply(`Please wait ${timeLeft.toFixed(1)} more second(s) before going for next \`${this.name}\`.`);
-      }
-    }
-
-    timestamps[message.author.id] = now;
-    setTimeout(() => delete timestamps[message.author.id], cooldownAmount);
-
+    // Check if the message content matches any defined errors
     for (const error of errors) {
       if (message.content.toLowerCase().includes(error.keywords)) {
+        // Respond with the corresponding embed message
         message.reply({ embeds: [error.embed] });
         return;
       }
     }
+    message.reply('No matching error found or input failed.\n In Future We will add Solutions for More errors!\n Thank you❤️‍🔥');
   },
 };
