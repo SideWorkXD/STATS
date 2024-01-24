@@ -125,11 +125,31 @@ module.exports = {
   cooldown: 3,
   execute(message) {
     if (!allowedChannels.includes(message.channel.id)) {
-      return; 
+      return;
     }
 
+    if (!cooldowns.has('error')) {
+      cooldowns.set('error', new Map());
+    }
+
+    const now = Date.now();
+    const timestamps = cooldowns.get('error');
+    const cooldownAmount = (3) * 1000; // 3 seconds cooldown
+
+    if (timestamps.has(message.author.id)) {
+      const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+      if (now < expirationTime) {
+        const timeLeft = (expirationTime - now) / 1000;
+        return message.reply(`Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`error\` command.`);
+      }
+    }
+
+    timestamps.set(message.author.id, now);
+    setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+
     for (const error of errors) {
-      if (message.content.toLowerCase().includes(error.keywords)) {
+      if (message.content.toLowerCase().includes(error.keywords.toLowerCase())) {
         message.reply({ embeds: [error.embed] });
         return;
       }
