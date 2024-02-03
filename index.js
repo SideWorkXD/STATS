@@ -124,8 +124,7 @@ login();
 
 setInterval(() => {
   if (!client || !client.user) {
-    console.log('\x1b[31m%s\x1b[0m', '❌ Client Not Logged in, Restarting Process...');
-    process.kill(1);
+   client.login(process.env.TOKEN);
   }
 }, 15000);
 
