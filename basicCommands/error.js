@@ -2,30 +2,30 @@ const { EmbedBuilder } = require('discord.js');
 
 const errors = [
   {
-    keywords: ['status 403', 'error : status 403','403 error'],
+    keywords: ['How to download After effects', 'How to download Premier pro','How to download media encoder'],
     embed: new EmbedBuilder()
       .setColor('#FF0000')
-      .setTitle('API Exhausted error')
+      .setTitle('How to download Free Software')
       .setDescription(' ▶️ If you get this error means YouTube API is used all.Watch This Video to get free API \n🔴 Link : https://youtu.be/-VCztMrNqRU')
       .setImage('https://cdn.discordapp.com/attachments/1170652474563117138/1201592073560789104/fyFl.gif?ex=65ca60d2&is=65b7ebd2&hm=e467baa9d8a5fe5820a81eb196360c76d0e2549cdf1d27f4459434b9053d0c78&'),
   },
 {
-    keywords: ['status edit bot ghost', 'how to edit bot ghost','bot ghost edit'],
+    keywords: ['Quality settings for after effects', 'Quality settings for premier pro','Quality settings'],
     embed: new EmbedBuilder()
       .setColor('#FF0000')
-      .setTitle('How to edit Bot Ghost Status')
+      .setTitle('Best Quality Settings')
       .setDescription('**Here is the video guide to edit bot ghost status on github.**\nhttps://cdn.discordapp.com/attachments/1039224128873443340/1213858294142341160/2024-03-03_20-02-28.mp4?ex=65f700a1&is=65e48ba1&hm=2acecf70f3fb882e24869d0ca2babc0e6eea707690ab3e63081b4db18cecc81e&'),
   },
   {
-    keywords: ['invalid bot token', 'incorrect token','token error'],
+    keywords: ['Invalid menu operation'],
     embed: new EmbedBuilder()
       .setColor('#FF0000')
-      .setTitle('Invalid Bot Token')
+      .setTitle('Invalid menu operation')
       .setDescription('⚠️ The token you provided for your bot is invalid. Please double-check your bot token or update it by keeping TOKEN in environment variables\n\n **▶️ token ❌    TOKEN ✅**')
       .setImage('https://cdn.discordapp.com/attachments/1196338346818027661/1199043994987008092/image.png?ex=65c11bbd&is=65aea6bd&hm=8dc1c46f7efa5d97549dc836f6a826dc530acd5e0da43c230ca09ca4911bd5f1&'),
   },
   {
-    keywords: ['how to make it 24/7s', 'how to host','bot goes offline','bot went offline','24/7 host','free hosting','stops working after'],
+    keywords: ['slow preview', 'laggy preview'],
     embed: new EmbedBuilder()
       .setColor('#FF0000')
       .setTitle('How to host bot online forever')
